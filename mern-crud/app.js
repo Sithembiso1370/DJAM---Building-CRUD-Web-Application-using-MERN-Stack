@@ -3,13 +3,19 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 
 var book = require('./routes/book');
 var app = express();
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/mern-crud', { useMongoClient: true, promiseLibrary: require('bluebird') })
+mongoose.connect('mongodb://localhost/mern-crud', 
+{ 
+    // useMongoClient: true, 
+    promiseLibrary: require('bluebird') 
+})
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
